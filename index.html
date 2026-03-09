@@ -503,128 +503,134 @@
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
   <script>
-  
-  const floatBtn = document.getElementById('floatingBtn');
-  let isDragging = false, offsetX = 0, offsetY = 0;
+const floatBtn = document.getElementById('floatingBtn');
+let isDragging = false, offsetX = 0, offsetY = 0;
 
-  
-  floatBtn.addEventListener('mousedown', function(e) {
-    isDragging = true;
-    offsetX = e.clientX - floatBtn.getBoundingClientRect().left;
-    offsetY = e.clientY - floatBtn.getBoundingClientRect().top;
-  });
+floatBtn.addEventListener('mousedown', function(e) {
+  isDragging = true;
+  offsetX = e.clientX - floatBtn.getBoundingClientRect().left;
+  offsetY = e.clientY - floatBtn.getBoundingClientRect().top;
+});
 
-  document.addEventListener('mousemove', function(e) {
-    if (isDragging) {
-      floatBtn.style.left = (e.clientX - offsetX) + 'px';
-      floatBtn.style.top = (e.clientY - offsetY) + 'px';
-    }
-  });
+document.addEventListener('mousemove', function(e) {
+  if (isDragging) {
+    floatBtn.style.left = (e.clientX - offsetX) + 'px';
+    floatBtn.style.top = (e.clientY - offsetY) + 'px';
+  }
+});
 
-  document.addEventListener('mouseup', function() {
-    isDragging = false;
-  });
+document.addEventListener('mouseup', function() {
+  isDragging = false;
+});
 
-  
-  floatBtn.addEventListener('touchstart', function(e) {
-    isDragging = true;
+floatBtn.addEventListener('touchstart', function(e) {
+  isDragging = true;
+  const touch = e.touches[0];
+  offsetX = touch.clientX - floatBtn.getBoundingClientRect().left;
+  offsetY = touch.clientY - floatBtn.getBoundingClientRect().top;
+});
+
+document.addEventListener('touchmove', function(e) {
+  if (isDragging) {
     const touch = e.touches[0];
-    offsetX = touch.clientX - floatBtn.getBoundingClientRect().left;
-    offsetY = touch.clientY - floatBtn.getBoundingClientRect().top;
-  });
+    floatBtn.style.left = (touch.clientX - offsetX) + 'px';
+    floatBtn.style.top = (touch.clientY - offsetY) + 'px';
+  }
+}, { passive: false });
 
-  document.addEventListener('touchmove', function(e) {
-    if (isDragging) {
-      const touch = e.touches[0];
-      floatBtn.style.left = (touch.clientX - offsetX) + 'px';
-      floatBtn.style.top = (touch.clientY - offsetY) + 'px';
-    }
-  }, { passive: false });
+document.addEventListener('touchend', function() {
+  isDragging = false;
+});
 
-  document.addEventListener('touchend', function() {
-    isDragging = false;
-  });
-
-  floatBtn.addEventListener('click', function() {
+floatBtn.addEventListener('click', function() {
   window.location.href = '/ask';
 });
 
-  
-      
 
 const toggleBtn = document.getElementById('dashboardToggleBtn');
-    const sidebar = document.getElementById('heistSidebar');
-    const closeBtn = document.getElementById('heistCloseBtn');
-    const overlay = document.getElementById('heistOverlay');
+const sidebar = document.getElementById('heistSidebar');
+const closeBtn = document.getElementById('heistCloseBtn');
+const overlay = document.getElementById('heistOverlay');
 
-    function openSidebar() {
-      sidebar.classList.add('active');
-      overlay.classList.add('active');
-      toggleBtn.style.display = 'none';
-    }
+function openSidebar() {
+  sidebar.classList.add('active');
+  overlay.classList.add('active');
+  toggleBtn.style.display = 'none';
+}
 
-    function closeSidebar() {
-      sidebar.classList.remove('active');
-      overlay.classList.remove('active');
-      setTimeout(() => {
-        toggleBtn.style.display = 'block';
-      }, 400);
-    }
+function closeSidebar() {
+  sidebar.classList.remove('active');
+  overlay.classList.remove('active');
+  setTimeout(() => {
+    toggleBtn.style.display = 'block';
+  }, 400);
+}
 
-    toggleBtn.addEventListener('click', openSidebar);
-    closeBtn.addEventListener('click', closeSidebar);
-    overlay.addEventListener('click', closeSidebar);
-
-   
-    const mainBotToggle = document.getElementById('mainBotToggle');
-    const mainBotSubLinks = document.getElementById('mainBotSubLinks');
-
-    mainBotToggle.addEventListener('click', () => {
-      if (mainBotSubLinks.style.display === 'block') {
-        mainBotSubLinks.style.display = 'none';
-        mainBotToggle.textContent = '▼';
-      } else {
-        mainBotSubLinks.style.display = 'block';
-        mainBotToggle.textContent = '▲';
-      }
-    });
-
-    window.addEventListener("load", () => {
-      const intro = document.getElementById("intro");
-      setTimeout(() => {
-        intro.style.transition = "opacity 0.8s ease";
-        intro.style.opacity = "0";
-        setTimeout(() => intro.style.display = "none", 800);
-      }, 2500);
-    });
-
-   
-    const miniBotToggle = document.getElementById('miniBotToggle');
-    const miniBotSubLinks = document.getElementById('miniBotSubLinks');
-
-    miniBotToggle.addEventListener('click', () => {
-      if (miniBotSubLinks.style.display === 'block') {
-        miniBotSubLinks.style.display = 'none';
-        miniBotToggle.textContent = '▼';
-      } else {
-        miniBotSubLinks.style.display = 'block';
-        miniBotToggle.textContent = '▲';
-      }
-    });
+toggleBtn.addEventListener('click', openSidebar);
+closeBtn.addEventListener('click', closeSidebar);
+overlay.addEventListener('click', closeSidebar);
 
 
-  const adUrl = "https://www.profitableratecpm.com/rb4cr65q?key=3b6a7cbc7586637cafb2b5edb213951a";
+const mainBotToggle = document.getElementById('mainBotToggle');
+const mainBotSubLinks = document.getElementById('mainBotSubLinks');
 
-  function handleFirstClick() {
-    
-    window.location.href = adUrl;
-
-    
-    document.removeEventListener("click", handleFirstClick);
+mainBotToggle.addEventListener('click', () => {
+  if (mainBotSubLinks.style.display === 'block') {
+    mainBotSubLinks.style.display = 'none';
+    mainBotToggle.textContent = '▼';
+  } else {
+    mainBotSubLinks.style.display = 'block';
+    mainBotToggle.textContent = '▲';
   }
+});
 
-  
-  document.addEventListener("click", handleFirstClick);
+// ✅ إضافة خاصة بـ Bots Spam
+const botsSpamToggle = document.getElementById("botsSpamToggle");
+const botsSpamSubLinks = document.getElementById("botsSpamSubLinks");
+
+botsSpamToggle.addEventListener("click", function () {
+  if (botsSpamSubLinks.style.display === "block") {
+    botsSpamSubLinks.style.display = "none";
+    botsSpamToggle.textContent = "▼";
+  } else {
+    botsSpamSubLinks.style.display = "block";
+    botsSpamToggle.textContent = "▲";
+  }
+});
+
+
+window.addEventListener("load", () => {
+  const intro = document.getElementById("intro");
+  setTimeout(() => {
+    intro.style.transition = "opacity 0.8s ease";
+    intro.style.opacity = "0";
+    setTimeout(() => intro.style.display = "none", 800);
+  }, 2500);
+});
+
+
+const miniBotToggle = document.getElementById('miniBotToggle');
+const miniBotSubLinks = document.getElementById('miniBotSubLinks');
+
+miniBotToggle.addEventListener('click', () => {
+  if (miniBotSubLinks.style.display === 'block') {
+    miniBotSubLinks.style.display = 'none';
+    miniBotToggle.textContent = '▼';
+  } else {
+    miniBotSubLinks.style.display = 'block';
+    miniBotToggle.textContent = '▲';
+  }
+});
+
+
+const adUrl = "https://www.profitableratecpm.com/rb4cr65q?key=3b6a7cbc7586637cafb2b5edb213951a";
+
+function handleFirstClick() {
+  window.location.href = adUrl;
+  document.removeEventListener("click", handleFirstClick);
+}
+
+document.addEventListener("click", handleFirstClick);
 </script>
   <script type="text/javascript" src="./a24865db38796e602d0b79cbc3413c52.js"></script>
 
