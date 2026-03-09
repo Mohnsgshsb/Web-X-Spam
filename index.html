@@ -1,0 +1,623 @@
+<!DOCTYPE html><html lang="en"><head>
+  <script async="" src="./adsbygoogle.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>𝑾𝑬𝑩 𝑿 𝑺𝑷𝑨𝑴</title>
+  <link rel="icon" type="image/png" href="./46a305f3-6f09-4576-a7e9-34325cc8aebe.jpeg">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #000;
+      color: #fff;
+      transition: background 0.4s, color 0.4s;
+    }
+    .news-strip {
+      display: flex;
+      overflow-x: auto;
+      background-color: #111;
+      border-bottom: 2px solid #e50914;
+      padding: 10px;
+    }
+    .news-card {
+      flex: 0 0 auto;
+      background: #1a1a1a;
+      border: 1px solid #e50914;
+      border-radius: 8px;
+      margin-right: 15px;
+      width: 250px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+    }
+    .news-card img {
+      width: 100%;
+      border-radius: 5px;
+    }
+    .news-card h4 {
+      color: #e50914;
+      margin: 10px 0 5px;
+    }
+    .news-card p {
+      font-size: 14px;
+    }
+    .hero {
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
+    .hero h1 {
+      font-size: 2em;
+      color: #e50914;
+      text-shadow: 2px 2px 10px rgba(229, 9, 20, 0.8);
+    }
+    .popup-buttons {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .popup-button {
+      background: linear-gradient(145deg, #e50914, #000);
+      padding: 14px 24px;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 0 12px #e50914;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      font-size: 16px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .popup-button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 24px #e50914;
+    }
+    .social-links {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .social-links a {
+      margin: 0 10px;
+      font-size: 24px;
+      color: #e50914;
+      transition: transform 0.3s;
+    }
+    .social-links a:hover {
+      transform: scale(1.3);
+      color: #fff;
+    }
+
+    .team-section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .team-section h2 {
+      color: #e50914;
+      margin-bottom: 30px;
+      font-size: 2em;
+    }
+
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .team-member {
+      background: #1a1a1a;
+      border: 1px solid #e50914;
+      border-radius: 12px;
+      padding: 20px;
+      width: 200px;
+      box-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+      text-align: center;
+    }
+
+    .team-member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #e50914;
+    }
+
+    .team-member h3 {
+      margin: 10px 0 5px;
+      color: #fff;
+    }
+
+    .team-member p {
+      margin: 0 0 10px;
+      color: #e50914;
+      font-weight: bold;
+    }
+
+    .team-member a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 16px;
+      background: linear-gradient(145deg, #e50914, #000);
+      color: white;
+      border-radius: 6px;
+      font-size: 14px;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .team-member a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #e50914;
+    }
+
+    .glow-btn {
+  background: #000;
+  color: red;
+  font-size: 20px;
+  border: 2px solid red;
+  padding: 10px 20px;
+  cursor: pointer;
+  box-shadow: 0 0 20px red, 0 0 40px red, 0 0 60px red;
+  transition: 0.3s;
+}
+
+.glow-btn:hover {
+  box-shadow: 0 0 30px #ff0000, 0 0 60px #ff0000, 0 0 90px #ff0000;
+}
+
+      #intro {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    .intro-logo {
+      width: 250px;          /* حجم البداية */
+      opacity: 0;
+      transform: scale(0.7); /* صغير في البداية */
+      animation: logoZoom 2s ease forwards;
+    }
+
+    @keyframes logoZoom {
+      0% { opacity: 0; transform: scale(0.7); }
+      50% { opacity: 1; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.5); } /* تكبير زي نتفليكس */
+    }
+
+  #floatingBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: url('./icons8-whatsapp-50.png') no-repeat center center;
+  background-size: 70%;
+  background-color: rgba(255, 0, 0, 0.9);
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.4);
+  cursor: pointer;
+  z-index: 9999;
+  touch-action: none;
+  animation: pulse 2s infinite;
+  transition: transform 0.2s ease;
+}
+
+#floatingBtn:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 1), 0 0 40px rgba(255, 0, 0, 0.6);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 1);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+  }
+}
+  :root {
+      --heist-red: #e50914;
+      --heist-dark: rgba(10, 10, 10, 0.8);
+      --btn-hover: rgba(255, 255, 255, 0.15);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    
+    #dashboardToggleBtn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--heist-dark) url('./menu--v1.png') no-repeat center center;
+      background-size: 50%;
+      cursor: pointer;
+      z-index: 10002;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px var(--heist-red);
+    }
+
+    #dashboardToggleBtn:hover {
+      transform: scale(1.1);
+      background-color: #111;
+    }
+
+    
+    #heistSidebar {
+      position: fixed;
+      top: 0;
+      right: -320px;
+      height: 100vh;
+      width: 300px;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(10px);
+      box-shadow: -2px 0 25px rgba(0, 0, 0, 0.7);
+      transition: right 0.4s ease;
+      z-index: 10003;
+      padding: 25px 20px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #heistSidebar.active {
+      right: 0;
+    }
+
+    
+    #heistOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      z-index: 10001;
+      display: none;
+    }
+
+    #heistOverlay.active {
+      display: block;
+    }
+
+    
+    #heistSidebarHeader {
+      font-size: 22px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding-bottom: 10px;
+    }
+
+    #heistCloseBtn {
+      font-size: 24px;
+      color: var(--heist-red);
+      cursor: pointer;
+    }
+
+    
+    .heistSidebarLink {
+      text-decoration: none;
+      margin: 10px 0;
+      padding: 12px 20px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+      font-weight: 600;
+      transition: background 0.3s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .heistSidebarLink:hover {
+      background: var(--btn-hover);
+    }
+
+    
+    .heistSubLinks {
+      display: none;
+      padding-left: 15px;
+    }
+
+    .heistSubLinks a {
+      background: rgba(255, 255, 255, 0.08);
+      margin: 5px 0;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    .heistSubLinks a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .toggleArrowBtn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  
+  </style>
+</head>
+<body>
+  <div id="floatingBtn" title="Go to another site"></div>
+
+  <div class="news-strip">
+    <div class="news-card">
+      <img src="./IMG-20250520-WA0054.jpg" alt="News Thumbnail">
+      <h4>Welcome In Web Team Spam</h4>
+      <p>Are you in the Team Spam family?<br>
+  Are you trying to stand in front of us?<br>
+  Believe me, you will die a death you will never forget</p>
+    </div>
+    <div class="news-card">
+      <img src="./IMG-20250520-WA0054.jpg" alt="News Thumbnail">
+      <h4>You Can't Stoped Owner Team Spam</h4>
+      <p>If you find a spam name try not to stop it.<br>
+  Trust me, you will regret it<br>
+  Do you know Malik?<br>
+  Do you know Samka?<br>
+  Do you know Terbo?<br>
+  If you see these names, stay away. We don’t joke,<br>
+  and it’s clear you’ve found us.</p>
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>X-SPAM</h1>
+    <div class="popup-buttons">
+  <a href="https://t.me/ffooxxo" class="popup-button" target="_blank" rel="noopener noreferrer">Channel Tele 1</a>
+  <a href="https://t.me/THHE_ENDDDD" class="popup-button" target="_blank" rel="noopener noreferrer">Channel Tele 2</a>
+    </div>
+
+    <div class="social-links">
+      <a href="https://github.com/Mohnd32145" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/terbo_001?igsh=ZzJsb2pua293ZGd2" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+
+  <div class="team-section">
+    <h2>TEAM SPAM OWNER</h2>
+<div class="team-grid">
+  <div class="team-member">
+    <img src="./6317.jpg" alt="MALIK">
+    <h3>MALIK</h3>
+    <p>Owner</p>
+    <a href="https://t.me/malik888Xx" target="_blank">𝗖𝗢𝗡𝗧𝗔𝗖𝗧</a>
+  </div>
+  <div class="team-member">
+    <img src="./file_00000000b2a0720ab6fcf106a99b57ed.png" alt="TERBO">
+    <h3>TERBO</h3>
+    <p>Admin</p>
+    <a href="https://t.me/Mohnd_A1" target="_blank">𝗖𝗢𝗡𝗧𝗔𝗖𝗧</a>
+  </div>
+  <div class="team-member">
+    <img src="./file_00000000b2a0720ab6fcf106a99b57ed.png" alt="SAMKA">
+    <h3>SAMKA</h3>
+    <p>Admin</p>
+    <a href="https://t.me/SAMKA_XSPAM" target="_blank">𝗖𝗢𝗡𝗧𝗔𝗖𝗧</a>
+  </div>
+    <div class="team-member">
+    <img src="./file_00000000b2a0720ab6fcf106a99b57ed.png" alt="HAISE">
+    <h3>HAISE</h3>
+    <p>Admin</p>
+    <a href="https://t.me/G_H01" target="_blank">𝗖𝗢𝗡𝗧𝗔𝗖𝗧</a>
+  </div>
+    <div class="team-member">
+    <img src="./file_00000000b2a0720ab6fcf106a99b57ed.png" alt="FOX">
+    <h3>FOX</h3>
+    <p>Admin</p>
+    <a href="https://t.me/AGGS9" target="_blank">𝗖𝗢𝗡𝗧𝗔𝗖𝗧</a>
+  </div>
+  </div>
+<div id="dashboardToggleBtn" title="About From Team Spam"></div>
+
+
+<div id="heistOverlay"></div>
+
+
+<div id="heistSidebar">
+  <div id="heistSidebarHeader">
+    About For Team Spam
+    <span id="heistCloseBtn">Back</span>
+    
+  </div>
+  <div class="heistSidebarLink">
+    <a href="/MainBot" style="color: white; text-decoration: none;">SC Crash Bots</a>
+    <button class="toggleArrowBtn" id="mainBotToggle">▼</button>
+  </div>
+  
+  <div class="heistSubLinks" id="mainBotSubLinks">
+    <a href="https://www.mediafire.com/file/rja9cb36x1lupcw/SPAM1.zip/file" class="heistSidebarLink" target="_blank" rel="noopener noreferrer">Spam_Bot1</a>
+  <a href="https://www.mediafire.com/file/l5drdlepoo5ynkb/spam2.zip/file" class="heistSidebarLink" target="_blank" rel="noopener noreferrer">Spam_Bot2</a>
+  </div>     
+    <div class="heistSidebarLink">
+    <a href="/MainBot" style="color: white; text-decoration: none;"> Bots Crash</a>
+    <button class="toggleArrowBtn" id="mainBotToggle">▼</button>
+  </div>
+  
+  <div class="heistSubLinks" id="mainBotSubLinks">
+  <a href="https://t.me/Spamdltik_bot" class="heistSidebarLink" target="_blank" rel="noopener noreferrer">DL Social</a>
+  <a href="https://t.me/SpamTeam_bot" class="heistSidebarLink" target="_blank" rel="noopener noreferrer">Group Bot</a>
+    <a href="https://t.me/ReferralsVpsNew_Bot?start=ref_HG46X74U" class="heistSidebarLink" target="_blank" rel="noopener noreferrer">VPS Bot</a>
+        <a href="https://t.me/Hostga_bot" class="heistSidebarLink" target="_blank" rel="noopener noreferrer">Bot Hsot PY</a>
+                <a href="https://t.me/Spamserver1_bot" class="heistSidebarLink" target="_blank" rel="noopener noreferrer">Servers bot 24</a>
+  </div>     
+  
+  <a href="./index3.html" class="heistSidebarLink" target="_blank" rel="noopener noreferrer">Malik</a>
+  
+  <a href="./index2.html/" class="heistSidebarLink" target="_blank" rel="noopener noreferrer">Terbo</a>
+  
+  <a href="./Samka.html" class="heistSidebarLink" target="_blank" rel="noopener noreferrer">Samka</a>
+  
+  <a href="./Fox.html" class="heistSidebarLink" target="_blank" rel="noopener noreferrer">FOX</a>
+  
+  <a href="https://mohnd00op.github.io/Samka/" class="heistSidebarLink" target="_blank" rel="noopener noreferrer">H A ! S E</a>
+ 
+  <div style="margin-top: 20px; padding: 10px; font-size: 12px; color: #ccc; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+    © 2019 TEAM X SPAM.
+  </div>
+</div>
+  
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8808636057090744" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script>
+  
+  const floatBtn = document.getElementById('floatingBtn');
+  let isDragging = false, offsetX = 0, offsetY = 0;
+
+  
+  floatBtn.addEventListener('mousedown', function(e) {
+    isDragging = true;
+    offsetX = e.clientX - floatBtn.getBoundingClientRect().left;
+    offsetY = e.clientY - floatBtn.getBoundingClientRect().top;
+  });
+
+  document.addEventListener('mousemove', function(e) {
+    if (isDragging) {
+      floatBtn.style.left = (e.clientX - offsetX) + 'px';
+      floatBtn.style.top = (e.clientY - offsetY) + 'px';
+    }
+  });
+
+  document.addEventListener('mouseup', function() {
+    isDragging = false;
+  });
+
+  
+  floatBtn.addEventListener('touchstart', function(e) {
+    isDragging = true;
+    const touch = e.touches[0];
+    offsetX = touch.clientX - floatBtn.getBoundingClientRect().left;
+    offsetY = touch.clientY - floatBtn.getBoundingClientRect().top;
+  });
+
+  document.addEventListener('touchmove', function(e) {
+    if (isDragging) {
+      const touch = e.touches[0];
+      floatBtn.style.left = (touch.clientX - offsetX) + 'px';
+      floatBtn.style.top = (touch.clientY - offsetY) + 'px';
+    }
+  }, { passive: false });
+
+  document.addEventListener('touchend', function() {
+    isDragging = false;
+  });
+
+  floatBtn.addEventListener('click', function() {
+  window.location.href = '/ask';
+});
+
+  
+      
+
+const toggleBtn = document.getElementById('dashboardToggleBtn');
+    const sidebar = document.getElementById('heistSidebar');
+    const closeBtn = document.getElementById('heistCloseBtn');
+    const overlay = document.getElementById('heistOverlay');
+
+    function openSidebar() {
+      sidebar.classList.add('active');
+      overlay.classList.add('active');
+      toggleBtn.style.display = 'none';
+    }
+
+    function closeSidebar() {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+      setTimeout(() => {
+        toggleBtn.style.display = 'block';
+      }, 400);
+    }
+
+    toggleBtn.addEventListener('click', openSidebar);
+    closeBtn.addEventListener('click', closeSidebar);
+    overlay.addEventListener('click', closeSidebar);
+
+   
+    const mainBotToggle = document.getElementById('mainBotToggle');
+    const mainBotSubLinks = document.getElementById('mainBotSubLinks');
+
+    mainBotToggle.addEventListener('click', () => {
+      if (mainBotSubLinks.style.display === 'block') {
+        mainBotSubLinks.style.display = 'none';
+        mainBotToggle.textContent = '▼';
+      } else {
+        mainBotSubLinks.style.display = 'block';
+        mainBotToggle.textContent = '▲';
+      }
+    });
+
+    window.addEventListener("load", () => {
+      const intro = document.getElementById("intro");
+      setTimeout(() => {
+        intro.style.transition = "opacity 0.8s ease";
+        intro.style.opacity = "0";
+        setTimeout(() => intro.style.display = "none", 800);
+      }, 2500);
+    });
+
+   
+    const miniBotToggle = document.getElementById('miniBotToggle');
+    const miniBotSubLinks = document.getElementById('miniBotSubLinks');
+
+    miniBotToggle.addEventListener('click', () => {
+      if (miniBotSubLinks.style.display === 'block') {
+        miniBotSubLinks.style.display = 'none';
+        miniBotToggle.textContent = '▼';
+      } else {
+        miniBotSubLinks.style.display = 'block';
+        miniBotToggle.textContent = '▲';
+      }
+    });
+
+
+  const adUrl = "https://www.profitableratecpm.com/rb4cr65q?key=3b6a7cbc7586637cafb2b5edb213951a";
+
+  function handleFirstClick() {
+    
+    window.location.href = adUrl;
+
+    
+    document.removeEventListener("click", handleFirstClick);
+  }
+
+  
+  document.addEventListener("click", handleFirstClick);
+</script>
+  <script type="text/javascript" src="./a24865db38796e602d0b79cbc3413c52.js"></script>
+
+
+</body></html>
